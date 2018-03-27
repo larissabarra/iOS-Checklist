@@ -11,11 +11,11 @@ import Foundation
 
 class ChecklistDataProvider {
     
-    func getItems() -> [String] {
-        return ["Walk the dog",
-                "Brush my teeth",
-                "Learn iOS development",
-                "Soccer practice",
-                "Eat ice cream"]
+    func getItems() -> [ChecklistItem] {
+        return [ChecklistItem(text: "Walk the dog", checked: false),
+                ChecklistItem(text: "Brush my teeth", checked: true),
+                ChecklistItem(text: "Learn iOS development", checked: true),
+                ChecklistItem(text: "Soccer practice", checked: false),
+                ChecklistItem(text: "Eat ice cream", checked: false)]
     }
 }
