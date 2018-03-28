@@ -44,7 +44,7 @@
                     <navigationItem key="navigationItem" title="Checklists" id="bIW-tK-s8H">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="f8M-j6-Ddw">
                             <connections>
-                                <segue destination="Vbb-Wb-xJH" kind="show" id="8pn-lW-i8D"/>
+                                <segue destination="Vbb-Wb-xJH" kind="show" identifier="goToAddItem" id="8pn-lW-i8D"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -101,6 +101,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="HyL-aR-MDF" id="Z2a-E4-0xP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U5R-o1-keh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

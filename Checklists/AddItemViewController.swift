@@ -9,12 +9,15 @@
 import UIKit
 
 class AddItemViewController: UITableViewController {
-
+    
+    @IBOutlet weak var textField: UITextField!
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
+        print(textField.text)
         navigationController?.popViewController(animated: true)
     }
     
