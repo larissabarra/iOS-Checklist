@@ -17,7 +17,7 @@ class AddItemViewController: UITableViewController {
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
-        print(textField.text)
+        print(textField.text!)
         navigationController?.popViewController(animated: true)
     }
     
@@ -29,5 +29,10 @@ class AddItemViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.becomeFirstResponder()
     }
 }
