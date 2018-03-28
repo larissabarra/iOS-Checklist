@@ -32,6 +32,7 @@ class ChecklistViewController: UITableViewController {
         loadItems()
     }
 
+    /* Data Source section */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -46,6 +47,7 @@ class ChecklistViewController: UITableViewController {
         return cell
     }
     
+    /* Delegate section */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let item = items[indexPath.row]
@@ -56,7 +58,16 @@ class ChecklistViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        dataProvider.removeItem(index: indexPath.row)
+        loadItems()
 
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+
+    /* class methods */
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         if item.checked {
             cell.accessoryType = .checkmark
