@@ -16,7 +16,7 @@ class AddItemViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func done(_ sender: UIBarButtonItem) {
+    @IBAction func done(_ sender: Any) {
         print(textField.text!)
         navigationController?.popViewController(animated: true)
     }
