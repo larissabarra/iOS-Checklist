@@ -25,4 +25,8 @@ class ChecklistDataProvider {
         let newItem = ChecklistItem(text: text, checked: checked)
         data.append(newItem)
     }
+    
+    func removeItem(index: Int) {
+        data.remove(at: index)
+    }
 }
