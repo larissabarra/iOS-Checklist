@@ -13,17 +13,6 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     let dataProvider = ChecklistDataProvider()
     var items: [ChecklistItem] = []
     
-    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
-        let newRowIndex = items.count
-        
-        dataProvider.addItem(text: "I am a new row")
-        loadItems()
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
