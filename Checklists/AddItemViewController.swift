@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddItemViewControllerDelegate: class {
     func newItemAdded()
+    func actionCancelled()
 }
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
@@ -21,7 +22,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     var dataProvider: ChecklistDataProvider?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        delegate?.actionCancelled()
     }
     
     @IBAction func done(_ sender: Any) {
@@ -29,7 +30,8 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         if let itemText = textField.text {
             dataProvider?.addItem(text: itemText)
         }
-        navigationController?.popViewController(animated: true)
+        
+        delegate?.newItemAdded()
     }
     
     override func viewDidLoad() {
@@ -45,10 +47,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        delegate?.newItemAdded()
     }
     
     /* text field delegate */
