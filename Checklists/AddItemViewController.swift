@@ -19,7 +19,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     
     var delegate: AddItemViewControllerDelegate?
-    var dataProvider: ChecklistDataProvider?
+    weak var dataProvider: ChecklistDataProvider?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         delegate?.actionCancelled()
