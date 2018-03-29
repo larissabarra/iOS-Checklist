@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
 
     let dataProvider = ChecklistDataProvider()
     var items: [ChecklistItem] = []
@@ -30,6 +30,21 @@ class ChecklistViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         loadItems()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let addItemScreen = segue.destination as! AddItemViewController
+        addItemScreen.dataProvider = dataProvider
+        addItemScreen.delegate = self
+    }
+    
+    /* AddItem delegate */
+    func newItemAdded() {
+        loadItems()
+        
+        let indexPath = IndexPath(row: items.count-1, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
     }
 
     /* Data Source section */

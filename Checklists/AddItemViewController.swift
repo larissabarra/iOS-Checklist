@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate: class {
+    func newItemAdded()
+}
+
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
+    
+    var delegate: AddItemViewControllerDelegate?
+    var dataProvider: ChecklistDataProvider?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
@@ -19,6 +26,9 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func done(_ sender: Any) {
         print(textField.text!)
+        if let itemText = textField.text {
+            dataProvider?.addItem(text: itemText)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -35,6 +45,10 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.newItemAdded()
     }
     
     /* text field delegate */
