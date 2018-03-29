@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
 
     let dataProvider = ChecklistDataProvider()
     var items: [ChecklistItem] = []
@@ -22,19 +22,19 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addOrEditItemScreen = segue.destination as! AddItemViewController
-        addOrEditItemScreen.delegate = self
+        let itemDetailScreen = segue.destination as! ItemDetailViewController
+        itemDetailScreen.delegate = self
         
         if segue.identifier == "goToAddItem" {
-            addOrEditItemScreen.dataProvider = dataProvider
+            itemDetailScreen.dataProvider = dataProvider
         } else if segue.identifier == "goToEditItem" {
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                addOrEditItemScreen.itemToEdit = items[indexPath.row]
+                itemDetailScreen.itemToEdit = items[indexPath.row]
             }
         }
     }
     
-    /* AddItem delegate */
+    /* ItemDetail delegate */
     func newItemAdded() {
         loadItems()
         
@@ -42,18 +42,18 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
-        dismissAddEditScreen()
+        dismissItemDetailScreen()
     }
     
     func itemEdited() {
         loadItems()
         tableView.reloadData()
         
-        dismissAddEditScreen()
+        dismissItemDetailScreen()
     }
     
     func actionCancelled() {
-        dismissAddEditScreen()
+        dismissItemDetailScreen()
     }
 
     /* Data Source section */
@@ -107,7 +107,7 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         items = dataProvider.getItems()
     }
     
-    func dismissAddEditScreen() -> UIViewController? {
+    func dismissItemDetailScreen() -> UIViewController? {
         return navigationController?.popViewController(animated: true)
     }
 }

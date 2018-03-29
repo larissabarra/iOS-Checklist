@@ -8,18 +8,18 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate: class {
+protocol ItemDetailViewControllerDelegate: class {
     func newItemAdded()
     func actionCancelled()
     func itemEdited()
 }
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var textField: UITextField!
     
-    var delegate: AddItemViewControllerDelegate?
+    var delegate: ItemDetailViewControllerDelegate?
     weak var dataProvider: ChecklistDataProvider?
     
     var itemToEdit: ChecklistItem?
