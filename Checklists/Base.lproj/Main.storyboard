@@ -46,6 +46,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Vbb-Wb-xJH" kind="show" identifier="goToEditItem" trigger="accessoryAction" id="9ov-dl-Zlo"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -145,4 +148,7 @@
             <point key="canvasLocation" x="59.200000000000003" y="109.74512743628186"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9ov-dl-Zlo"/>
+    </inferredMetricsTieBreakers>
 </document>

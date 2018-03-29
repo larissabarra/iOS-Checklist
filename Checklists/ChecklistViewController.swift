@@ -22,10 +22,15 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let addOrEditItemScreen = segue.destination as! AddItemViewController
+        addOrEditItemScreen.delegate = self
+        
         if segue.identifier == "goToAddItem" {
-            let addItemScreen = segue.destination as! AddItemViewController
-            addItemScreen.dataProvider = dataProvider
-            addItemScreen.delegate = self
+            addOrEditItemScreen.dataProvider = dataProvider
+        } else if segue.identifier == "goToEditItem" {
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                addOrEditItemScreen.itemToEdit = items[indexPath.row]
+            }
         }
     }
     

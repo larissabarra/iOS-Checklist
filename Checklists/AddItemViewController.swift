@@ -21,6 +21,8 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     var delegate: AddItemViewControllerDelegate?
     weak var dataProvider: ChecklistDataProvider?
     
+    var itemToEdit: ChecklistItem?
+    
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         delegate?.actionCancelled()
     }
@@ -38,6 +40,11 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
+        
+        if let item = itemToEdit {
+            title = "Edit item"
+            textField.text = item.text
+        }
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
