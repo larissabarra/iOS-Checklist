@@ -11,6 +11,7 @@ import UIKit
 protocol AddItemViewControllerDelegate: class {
     func newItemAdded()
     func actionCancelled()
+    func itemEdited()
 }
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
@@ -28,12 +29,18 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func done(_ sender: Any) {
-        print(textField.text!)
         if let itemText = textField.text {
-            dataProvider?.addItem(text: itemText)
+            if let item = itemToEdit {
+                item.text = itemText
+                dataProvider?.editItem(item: item)
+                
+                delegate?.itemEdited()
+            } else {
+                dataProvider?.addItem(text: itemText)
+                
+                delegate?.newItemAdded()
+            }
         }
-        
-        delegate?.newItemAdded()
     }
     
     override func viewDidLoad() {

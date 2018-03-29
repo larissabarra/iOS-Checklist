@@ -42,11 +42,18 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
-        navigationController?.popViewController(animated: true)
+        dismissAddEditScreen()
+    }
+    
+    func itemEdited() {
+        loadItems()
+        tableView.reloadData()
+        
+        dismissAddEditScreen()
     }
     
     func actionCancelled() {
-        navigationController?.popViewController(animated: true)
+        dismissAddEditScreen()
     }
 
     /* Data Source section */
@@ -98,6 +105,10 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     
     func loadItems() {
         items = dataProvider.getItems()
+    }
+    
+    func dismissAddEditScreen() -> UIViewController? {
+        return navigationController?.popViewController(animated: true)
     }
 }
 
