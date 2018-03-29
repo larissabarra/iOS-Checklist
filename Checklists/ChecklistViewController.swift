@@ -33,9 +33,11 @@ class ChecklistViewController: UITableViewController, AddItemViewControllerDeleg
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addItemScreen = segue.destination as! AddItemViewController
-        addItemScreen.dataProvider = dataProvider
-        addItemScreen.delegate = self
+        if segue.identifier == "goToAddItem" {
+            let addItemScreen = segue.destination as! AddItemViewController
+            addItemScreen.dataProvider = dataProvider
+            addItemScreen.delegate = self
+        }
     }
     
     /* AddItem delegate */
