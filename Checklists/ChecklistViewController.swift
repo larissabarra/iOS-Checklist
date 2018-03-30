@@ -43,6 +43,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         tableView.insertRows(at: indexPaths, with: .automatic)
         
         dismissItemDetailScreen()
+        saveChecklistItems()
     }
     
     func itemEdited() {
@@ -50,6 +51,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         tableView.reloadData()
         
         dismissItemDetailScreen()
+        saveChecklistItems()
     }
     
     func actionCancelled() {
@@ -78,6 +80,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             item.toggleChecked()
             
             configureCheckmark(for: cell, with: item)
+            saveChecklistItems()
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -89,6 +92,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        saveChecklistItems()
     }
 
     /* class methods */
@@ -109,6 +113,26 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     
     func dismissItemDetailScreen() -> UIViewController? {
         return navigationController?.popViewController(animated: true)
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklists.plist")
+    }
+    
+    func saveChecklistItems() {
+        let encoder = PropertyListEncoder()
+
+        do {
+            let data = try encoder.encode(items)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding item array!")
+        }
     }
 }
 
