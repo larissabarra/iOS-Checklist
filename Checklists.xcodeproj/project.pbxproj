@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B28B4839206F041D00144754 /* ChecklistDataPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B4838206F041D00144754 /* ChecklistDataPersistence.swift */; };
 		B2BACE4A206AC614009ECA6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BACE49206AC614009ECA6B /* AppDelegate.swift */; };
 		B2BACE4C206AC614009ECA6B /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BACE4B206AC614009ECA6B /* ChecklistViewController.swift */; };
 		B2BACE4F206AC614009ECA6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2BACE4D206AC614009ECA6B /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B28B4838206F041D00144754 /* ChecklistDataPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistDataPersistence.swift; sourceTree = "<group>"; };
 		B2BACE46206AC614009ECA6B /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2BACE49206AC614009ECA6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2BACE4B206AC614009ECA6B /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				B2BACE77206ACF1A009ECA6B /* ChecklistDataProvider.swift */,
 				B2BACE79206ADCDF009ECA6B /* ChecklistItem.swift */,
 				B2BACEBB206C15DF009ECA6B /* ItemDetailViewController.swift */,
+				B28B4838206F041D00144754 /* ChecklistDataPersistence.swift */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				B2BACE4C206AC614009ECA6B /* ChecklistViewController.swift in Sources */,
 				B2BACE4A206AC614009ECA6B /* AppDelegate.swift in Sources */,
 				B2BACE78206ACF1A009ECA6B /* ChecklistDataProvider.swift in Sources */,
+				B28B4839206F041D00144754 /* ChecklistDataPersistence.swift in Sources */,
 				B2BACE7A206ADCDF009ECA6B /* ChecklistItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

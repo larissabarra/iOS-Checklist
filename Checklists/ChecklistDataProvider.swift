@@ -11,6 +11,8 @@ import Foundation
 
 class ChecklistDataProvider {
     
+    let persistence = ChecklistDataPersistence()
+    
     var data: [ChecklistItem] = [ChecklistItem(text: "Walk the dog", checked: false),
                                  ChecklistItem(text: "Brush my teeth", checked: true),
                                  ChecklistItem(text: "Learn iOS development", checked: true),
@@ -24,15 +26,22 @@ class ChecklistDataProvider {
     func addItem(text: String, checked: Bool = false) {
         let newItem = ChecklistItem(text: text, checked: checked)
         data.append(newItem)
+        persist()
     }
     
     func editItem(item: ChecklistItem) {
         if let index = data.index(of: item) {
             data[index] = item
+            persist()
         }
     }
     
     func removeItem(index: Int) {
         data.remove(at: index)
+        persist()
+    }
+    
+    func persist() {
+        persistence.saveChecklistItems(items: data)
     }
 }
