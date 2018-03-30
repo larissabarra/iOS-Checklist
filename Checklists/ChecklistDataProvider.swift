@@ -1,6 +1,6 @@
 
 //
-//  ChecklistData.swift
+//  ChecklistDataProvider.swift
 //  Checklists
 //
 //  Created by Larissa Barra Conde on 27/03/18.
