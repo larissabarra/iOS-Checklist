@@ -20,6 +20,10 @@ class ChecklistDataProvider {
                                  ChecklistItem(text: "Eat ice cream", checked: false)]
     
     func getItems() -> [ChecklistItem] {
+        let loadedItems = persistence.loadChecklistItems()
+        if !loadedItems.isEmpty {
+            data = loadedItems
+        }
         return data
     }
     

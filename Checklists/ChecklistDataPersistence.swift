@@ -28,4 +28,19 @@ class ChecklistDataPersistence {
             print("Error encoding item array!")
         }
     }
+    
+    func loadChecklistItems() -> [ChecklistItem] {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                let items = try decoder.decode([ChecklistItem].self, from: data)
+                return items
+            } catch {
+                print("Error decoding item array!")
+            }
+        }
+        return []
+    }
 }
