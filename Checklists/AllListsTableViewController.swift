@@ -56,6 +56,10 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         } else if segue.identifier == "goToEditList" {
             let listDetailView = segue.destination as! ListDetailViewController
             listDetailView.delegate = self
+            
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                listDetailView.checklistToEdit = lists[indexPath.row]
+            }
         }
     }
     

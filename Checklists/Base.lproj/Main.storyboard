@@ -188,7 +188,7 @@
             </objects>
             <point key="canvasLocation" x="-7" y="108"/>
         </scene>
-        <!--Add list-->
+        <!--Add checklist-->
         <scene sceneID="EvW-T3-1zk">
             <objects>
                 <tableViewController id="0Ug-Nb-lGO" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
@@ -224,13 +224,13 @@
                             <outlet property="delegate" destination="0Ug-Nb-lGO" id="YKe-Xv-eNe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add list" id="Xgz-Bv-Xpj">
+                    <navigationItem key="navigationItem" title="Add checklist" id="Xgz-Bv-Xpj">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XvO-aq-MyL">
                             <connections>
                                 <action selector="cancel:" destination="0Ug-Nb-lGO" id="CwI-W1-h6E"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ziH-MH-JSs"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="ziH-MH-JSs"/>
                     </navigationItem>
                     <connections>
                         <outlet property="doneBarButton" destination="ziH-MH-JSs" id="vFH-yx-7ed"/>

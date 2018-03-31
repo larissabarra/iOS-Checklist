@@ -26,4 +26,16 @@ class ListDetailViewController: UITableViewController {
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         delegate?.actionCancelled()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.largeTitleDisplayMode = .never
+        
+        if let checklist = checklistToEdit {
+            title = "Edit checklist"
+            textField.text = checklist.name
+            doneBarButton.isEnabled = true
+        }
+    }
 }
