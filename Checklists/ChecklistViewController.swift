@@ -12,10 +12,12 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 
     let dataProvider = ChecklistDataProvider()
     var items: [ChecklistItem] = []
+    var checklist: Checklist?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = checklist?.name
         navigationItem.largeTitleDisplayMode = .never
 
         loadItems()

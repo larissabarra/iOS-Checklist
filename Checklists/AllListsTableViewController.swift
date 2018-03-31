@@ -38,11 +38,19 @@ class AllListsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showChecklist", sender: nil)
+        let checklist = lists[indexPath.row]
+        performSegue(withIdentifier: "showChecklist", sender: checklist)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showChecklist" {
+            let checklistView = segue.destination as! ChecklistViewController
+            checklistView.checklist = sender as! Checklist
+        }
     }
     
     func makeCell(for tableView: UITableView) -> UITableViewCell {
-        let cellIdentifier = "Cell"
+        let cellIdentifier = "listCell"
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             return cell
         } else {
