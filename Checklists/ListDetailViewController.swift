@@ -24,5 +24,6 @@ class ListDetailViewController: UITableViewController {
     var checklistToEdit: Checklist?
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        delegate?.actionCancelled()
     }
 }

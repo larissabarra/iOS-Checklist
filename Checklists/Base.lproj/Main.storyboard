@@ -164,7 +164,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="0Ug-Nb-lGO" kind="show" trigger="accessoryAction" id="hl9-3l-5I3"/>
+                                    <segue destination="0Ug-Nb-lGO" kind="show" identifier="goToEditList" trigger="accessoryAction" id="hl9-3l-5I3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -176,7 +176,7 @@
                     <navigationItem key="navigationItem" title="Checklists" id="73e-oa-m7A">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zBi-hD-GoZ">
                             <connections>
-                                <segue destination="0Ug-Nb-lGO" kind="show" id="9d6-Xb-Eeg"/>
+                                <segue destination="0Ug-Nb-lGO" kind="show" identifier="goToAddList" id="9d6-Xb-Eeg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -243,7 +243,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9d6-Xb-Eeg"/>
+        <segue reference="hl9-3l-5I3"/>
         <segue reference="9ov-dl-Zlo"/>
     </inferredMetricsTieBreakers>
 </document>

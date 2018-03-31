@@ -35,7 +35,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
     }
     
-    /* ItemDetail delegate */
+    /* MARK - ItemDetail delegate */
     func newItemAdded() {
         loadItems()
         
@@ -57,7 +57,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         dismissItemDetailScreen()
     }
 
-    /* Data Source section */
+    /* MARK - Data Source section */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -72,7 +72,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         return cell
     }
     
-    /* Delegate section */
+    /* MARK - Delegate section */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let item = items[indexPath.row]
@@ -93,7 +93,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
 
-    /* class methods */
+    /* MARK - class methods */
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         let label = cell.viewWithTag(1001) as! UILabel
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllListsTableViewController: UITableViewController {
+class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate {
     
     var lists: [Checklist] = []
     
@@ -20,6 +20,7 @@ class AllListsTableViewController: UITableViewController {
         lists = [Checklist(name: "teste1"), Checklist(name: "teste2"), Checklist(name: "teste3")]
     }
 
+    //MARK - data source methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
     }
@@ -31,12 +32,15 @@ class AllListsTableViewController: UITableViewController {
         return cell
     }
     
+    
+    //MARK - delegate methods
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         lists.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
+    //MARK - segue methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let checklist = lists[indexPath.row]
         performSegue(withIdentifier: "showChecklist", sender: checklist)
@@ -46,9 +50,29 @@ class AllListsTableViewController: UITableViewController {
         if segue.identifier == "showChecklist" {
             let checklistView = segue.destination as! ChecklistViewController
             checklistView.checklist = sender as! Checklist
+        } else if segue.identifier == "goToAddList" {
+            let listDetailView = segue.destination as! ListDetailViewController
+            listDetailView.delegate = self
+        } else if segue.identifier == "goToEditList" {
+            let listDetailView = segue.destination as! ListDetailViewController
+            listDetailView.delegate = self
         }
     }
     
+    //MARK - list detail delegate methods
+    func newListAdded() {
+        
+    }
+    
+    func actionCancelled() {
+        dismissListDetailScreen()
+    }
+    
+    func listEdited() {
+        
+    }
+    
+    //MARK - class methods
     func makeCell(for tableView: UITableView) -> UITableViewCell {
         let cellIdentifier = "listCell"
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
@@ -56,5 +80,9 @@ class AllListsTableViewController: UITableViewController {
         } else {
             return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
+    }
+    
+    func dismissListDetailScreen() -> UIViewController? {
+        return navigationController?.popViewController(animated: true)
     }
 }
