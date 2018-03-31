@@ -20,7 +20,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         lists = [Checklist(name: "teste1"), Checklist(name: "teste2"), Checklist(name: "teste3")]
     }
 
-    //MARK - data source methods
+    // MARK: - data source methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
     }
@@ -33,14 +33,14 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     }
     
     
-    //MARK - delegate methods
+    // MARK: - delegate methods
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         lists.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
-    //MARK - segue methods
+    // MARK: - segue methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let checklist = lists[indexPath.row]
         performSegue(withIdentifier: "showChecklist", sender: checklist)
@@ -59,7 +59,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         }
     }
     
-    //MARK - list detail delegate methods
+    //MARK: - list detail delegate methods
     func newListAdded() {
         
     }
@@ -72,7 +72,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         
     }
     
-    //MARK - class methods
+    //MARK: - class methods
     func makeCell(for tableView: UITableView) -> UITableViewCell {
         let cellIdentifier = "listCell"
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
