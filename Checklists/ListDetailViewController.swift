@@ -27,6 +27,15 @@ class ListDetailViewController: UITableViewController {
         delegate?.actionCancelled()
     }
     
+    @IBAction func done(_ sender: Any) {
+        if let checklist = checklistToEdit {
+            checklist.name = textField.text!
+            delegate?.listEdited()
+        } else {
+            delegate?.newListAdded()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

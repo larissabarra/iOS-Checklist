@@ -65,7 +65,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     
     //MARK: - list detail delegate methods
     func newListAdded() {
-        
+        dismissListDetailScreen()
     }
     
     func actionCancelled() {
@@ -73,7 +73,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     }
     
     func listEdited() {
-        
+        dismissListDetailScreen()
     }
     
     //MARK: - class methods
