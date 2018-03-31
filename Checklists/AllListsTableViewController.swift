@@ -26,7 +26,8 @@ class AllListsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = makeCell(for: tableView)
-        cell.textLabel!.text = "List \(indexPath.row)"
+        cell.textLabel!.text = lists[indexPath.row].name
+        cell.accessoryType = .detailDisclosureButton
         return cell
     }
     
