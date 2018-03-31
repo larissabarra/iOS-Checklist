@@ -17,6 +17,12 @@ protocol ListDetailViewControllerDelegate: class {
 
 class ListDetailViewController: UITableViewController {
     
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
     weak var delegate: ListDetailViewControllerDelegate?
     var checklistToEdit: Checklist?
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+    }
 }

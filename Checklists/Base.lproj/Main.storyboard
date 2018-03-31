@@ -225,9 +225,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add list" id="Xgz-Bv-Xpj">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XvO-aq-MyL"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XvO-aq-MyL">
+                            <connections>
+                                <action selector="cancel:" destination="0Ug-Nb-lGO" id="CwI-W1-h6E"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ziH-MH-JSs"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneBarButton" destination="ziH-MH-JSs" id="vFH-yx-7ed"/>
+                        <outlet property="textField" destination="bGc-f9-TNf" id="hps-MT-beE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rfx-6U-w3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
