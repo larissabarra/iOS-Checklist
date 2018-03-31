@@ -8,12 +8,13 @@
 
 import Foundation
 
-class Checklist {
+class Checklist: NSObject {
     var name: String
     var items: [ChecklistItem]
     
     init(name: String) {
         self.name = name
         self.items = []
+        super.init()
     }
 }
