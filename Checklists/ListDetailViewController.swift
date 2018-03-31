@@ -38,4 +38,9 @@ class ListDetailViewController: UITableViewController {
             doneBarButton.isEnabled = true
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.becomeFirstResponder()
+    }
 }
