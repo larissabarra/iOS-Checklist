@@ -10,14 +10,18 @@ import UIKit
 
 class AllListsTableViewController: UITableViewController {
     
+    var lists: [Checklist] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        lists = [Checklist(name: "teste1"), Checklist(name: "teste2"), Checklist(name: "teste3")]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return lists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
