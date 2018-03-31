@@ -24,10 +24,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let itemDetailScreen = segue.destination as! ItemDetailViewController
         itemDetailScreen.delegate = self
+        itemDetailScreen.dataProvider = dataProvider
         
-        if segue.identifier == "goToAddItem" {
-            itemDetailScreen.dataProvider = dataProvider
-        } else if segue.identifier == "goToEditItem" {
+        if segue.identifier == "goToEditItem" {
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 itemDetailScreen.itemToEdit = items[indexPath.row]
             }
