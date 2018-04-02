@@ -20,7 +20,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     
     var delegate: ItemDetailViewControllerDelegate?
-    weak var dataProvider: ChecklistDataProvider?
+    weak var dataProvider: ChecklistItemDataProvider?
     
     var itemToEdit: ChecklistItem?
     

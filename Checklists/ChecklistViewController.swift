@@ -10,7 +10,7 @@ import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
 
-    let dataProvider = ChecklistDataProvider()
+    let dataProvider = ChecklistItemDataProvider()
     var items: [ChecklistItem] = []
     var checklist: Checklist?
     

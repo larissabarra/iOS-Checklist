@@ -9,7 +9,7 @@
 
 import Foundation
 
-class ChecklistDataProvider {
+class ChecklistItemDataProvider {
     
     let persistence = ChecklistDataPersistence()
     
