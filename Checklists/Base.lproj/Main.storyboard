@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -30,21 +31,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eho-vf-ntf">
-                                            <rect key="frame" x="39" y="12" width="253" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eho-vf-ntf">
+                                            <rect key="frame" x="257" y="12" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkT-kQ-5s4">
-                                            <rect key="frame" x="16" y="11" width="13" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkT-kQ-5s4">
+                                            <rect key="frame" x="235.5" y="9.5" width="11.5" height="24"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Eho-vf-ntf" firstAttribute="centerY" secondItem="7nd-Zd-kdh" secondAttribute="centerY" id="0E6-QJ-IHw"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Eho-vf-ntf" secondAttribute="trailing" id="4YG-wp-Zqz"/>
+                                        <constraint firstItem="vkT-kQ-5s4" firstAttribute="centerY" secondItem="7nd-Zd-kdh" secondAttribute="centerY" id="S4C-kj-W9H"/>
+                                        <constraint firstItem="Eho-vf-ntf" firstAttribute="leading" secondItem="vkT-kQ-5s4" secondAttribute="trailing" constant="10" id="W3t-Cp-zn9"/>
+                                        <constraint firstItem="vkT-kQ-5s4" firstAttribute="leading" secondItem="7nd-Zd-kdh" secondAttribute="leadingMargin" constant="8" id="iXl-pw-G3Y"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="Vbb-Wb-xJH" kind="show" identifier="goToEditItem" trigger="accessoryAction" id="9ov-dl-Zlo"/>
@@ -254,12 +260,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p81-QW-UO9">
-                                                    <rect key="frame" x="297" y="8" width="36" height="36"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p81-QW-UO9">
+                                                    <rect key="frame" x="297" y="3" width="36" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="JRV-F3-02f"/>
+                                                        <constraint firstAttribute="width" constant="36" id="ve2-eh-eTL"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="p81-QW-UO9" firstAttribute="centerY" secondItem="vqK-6B-zp8" secondAttribute="centerY" id="37g-GK-ip2"/>
+                                                <constraint firstAttribute="bottom" secondItem="p81-QW-UO9" secondAttribute="bottom" constant="4.5" id="Oqt-qq-UBk"/>
+                                                <constraint firstItem="p81-QW-UO9" firstAttribute="top" secondItem="vqK-6B-zp8" secondAttribute="top" constant="3" id="U8q-a3-TGP"/>
+                                                <constraint firstAttribute="trailing" secondItem="p81-QW-UO9" secondAttribute="trailing" constant="8" id="aZd-kY-xLP"/>
                                                 <constraint firstAttribute="trailing" secondItem="p81-QW-UO9" secondAttribute="trailing" constant="8" id="urm-Un-tdP"/>
                                             </constraints>
                                         </tableViewCellContentView>
