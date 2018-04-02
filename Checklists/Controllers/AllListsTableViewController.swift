@@ -21,6 +21,11 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         refreshData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -40,7 +45,17 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = makeCell(for: tableView)
-        cell.textLabel!.text = lists[indexPath.row].name
+        let checklist = lists[indexPath.row]
+        cell.textLabel!.text = checklist.name
+        
+        let count = checklist.countUncheckedItems()
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "(No items)"
+        } else if count == 0 {
+            cell.detailTextLabel!.text = "All done!"
+        } else {
+            cell.detailTextLabel!.text = "\(count) Remaining"
+        }
         cell.accessoryType = .detailDisclosureButton
         return cell
     }
@@ -115,7 +130,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
             return cell
         } else {
-            return UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+            return UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
     }
     
