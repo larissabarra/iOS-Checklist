@@ -46,23 +46,14 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = makeCell(for: tableView)
         let checklist = lists[indexPath.row]
+        
         cell.textLabel!.text = checklist.name
-        
-        let count = checklist.countUncheckedItems()
-        if checklist.items.count == 0 {
-            cell.detailTextLabel!.text = "(No items)"
-        } else if count == 0 {
-            cell.detailTextLabel!.text = "All done!"
-        } else {
-            cell.detailTextLabel!.text = "\(count) Remaining"
-        }
-        
+        cell.detailTextLabel!.text = getSubtitle(checklist)
         cell.accessoryType = .detailDisclosureButton
         cell.imageView!.image = UIImage(named: checklist.iconName)
         
         return cell
     }
-    
     
     // MARK: - delegate methods
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -132,6 +123,17 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
             return cell
         } else {
             return UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+        }
+    }
+    
+    func getSubtitle(_ checklist: Checklist) -> String {
+        let count = checklist.countUncheckedItems()
+        if checklist.items.count == 0 {
+            return "(No items)"
+        } else if count == 0 {
+            return  "All done!"
+        } else {
+            return "\(count) Remaining"
         }
     }
     
