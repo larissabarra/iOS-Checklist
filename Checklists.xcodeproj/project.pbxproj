@@ -114,19 +114,14 @@
 			isa = PBXGroup;
 			children = (
 				B2BACE49206AC614009ECA6B /* AppDelegate.swift */,
-				B2BACE4B206AC614009ECA6B /* ChecklistViewController.swift */,
-				B23C29FF207028210055F5B0 /* ListDetailViewController.swift */,
-				B2BACE4D206AC614009ECA6B /* Main.storyboard */,
 				B2BACE50206AC614009ECA6B /* Assets.xcassets */,
-				B2BACE52206AC614009ECA6B /* LaunchScreen.storyboard */,
 				B2BACE55206AC614009ECA6B /* Info.plist */,
-				B2BACE77206ACF1A009ECA6B /* ChecklistItemDataProvider.swift */,
-				B28B483A206F174A00144754 /* AllListsTableViewController.swift */,
-				B2564781207278C400946DF7 /* ChecklistDataProvider.swift */,
-				B23C29FD20701E2A0055F5B0 /* Checklist.swift */,
-				B2BACE79206ADCDF009ECA6B /* ChecklistItem.swift */,
-				B2BACEBB206C15DF009ECA6B /* ItemDetailViewController.swift */,
-				B28B4838206F041D00144754 /* ChecklistDataPersistence.swift */,
+				B2BACE52206AC614009ECA6B /* LaunchScreen.storyboard */,
+				B2BACE4D206AC614009ECA6B /* Main.storyboard */,
+				B2FDD0572072ACB200768DB6 /* Controllers */,
+				B2FDD0592072ACF700768DB6 /* Models */,
+				B2FDD05A2072AD0600768DB6 /* Persistence */,
+				B2FDD0582072ACDE00768DB6 /* Providers */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -147,6 +142,43 @@
 				B2BACE6B206AC614009ECA6B /* Info.plist */,
 			);
 			path = ChecklistsUITests;
+			sourceTree = "<group>";
+		};
+		B2FDD0572072ACB200768DB6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2BACE4B206AC614009ECA6B /* ChecklistViewController.swift */,
+				B28B483A206F174A00144754 /* AllListsTableViewController.swift */,
+				B2BACEBB206C15DF009ECA6B /* ItemDetailViewController.swift */,
+				B23C29FF207028210055F5B0 /* ListDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B2FDD0582072ACDE00768DB6 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				B2564781207278C400946DF7 /* ChecklistDataProvider.swift */,
+				B2BACE77206ACF1A009ECA6B /* ChecklistItemDataProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		B2FDD0592072ACF700768DB6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B23C29FD20701E2A0055F5B0 /* Checklist.swift */,
+				B2BACE79206ADCDF009ECA6B /* ChecklistItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B2FDD05A2072AD0600768DB6 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				B28B4838206F041D00144754 /* ChecklistDataPersistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
