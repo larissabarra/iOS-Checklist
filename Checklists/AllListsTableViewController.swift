@@ -11,7 +11,7 @@ import UIKit
 class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate {
     
     var lists: [Checklist] = []
-    var dataProvider = ChecklistDataProvider()
+    var dataProvider: ChecklistDataProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,6 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     }
     
     func refreshData() {
-        lists = dataProvider.getLists()
+        lists = dataProvider!.getLists()
     }
 }
