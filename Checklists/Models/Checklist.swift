@@ -11,10 +11,12 @@ import Foundation
 class Checklist: NSObject, Codable {
     var name: String
     var items: [ChecklistItem]
+    var iconName: String
     
     init(name: String) {
         self.name = name
         self.items = []
+        self.iconName = "No Icon"
         super.init()
     }
     
