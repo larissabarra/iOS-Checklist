@@ -214,6 +214,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="done:" destination="0Ug-Nb-lGO" eventType="editingDidEndOnExit" id="l5q-2b-5cm"/>
+                                                        <outlet property="delegate" destination="0Ug-Nb-lGO" id="PKf-0t-KdW"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
