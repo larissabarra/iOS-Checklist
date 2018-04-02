@@ -26,8 +26,8 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         
         navigationController?.delegate = self
         
-        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
-        if index != -1 {
+        let index = dataProvider!.indexOfSelectedChecklist
+        if index >= 0 && index < lists.count {
             let checklist = lists[index]
             performSegue(withIdentifier: "showChecklist", sender: checklist)
         }
@@ -55,7 +55,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     
     // MARK: - segue methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        dataProvider!.indexOfSelectedChecklist = indexPath.row
         
         let checklist = lists[indexPath.row]
         performSegue(withIdentifier: "showChecklist", sender: checklist)
@@ -105,7 +105,7 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     //MARK: - navigation controller delegate
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController === self {
-            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+            dataProvider!.indexOfSelectedChecklist = -1
         }
     }
     
