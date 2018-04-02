@@ -22,6 +22,7 @@
 		B2BACE78206ACF1A009ECA6B /* ChecklistItemDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BACE77206ACF1A009ECA6B /* ChecklistItemDataProvider.swift */; };
 		B2BACE7A206ADCDF009ECA6B /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BACE79206ADCDF009ECA6B /* ChecklistItem.swift */; };
 		B2BACEBC206C15DF009ECA6B /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BACEBB206C15DF009ECA6B /* ItemDetailViewController.swift */; };
+		B2FDD05C2072BB3B00768DB6 /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FDD05B2072BB3B00768DB6 /* IconPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B2BACE77206ACF1A009ECA6B /* ChecklistItemDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemDataProvider.swift; sourceTree = "<group>"; };
 		B2BACE79206ADCDF009ECA6B /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		B2BACEBB206C15DF009ECA6B /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		B2FDD05B2072BB3B00768DB6 /* IconPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				B28B483A206F174A00144754 /* AllListsTableViewController.swift */,
 				B2BACEBB206C15DF009ECA6B /* ItemDetailViewController.swift */,
 				B23C29FF207028210055F5B0 /* ListDetailViewController.swift */,
+				B2FDD05B2072BB3B00768DB6 /* IconPickerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				B2BACE4A206AC614009ECA6B /* AppDelegate.swift in Sources */,
 				B2BACE78206ACF1A009ECA6B /* ChecklistItemDataProvider.swift in Sources */,
 				B23C29FE20701E2A0055F5B0 /* Checklist.swift in Sources */,
+				B2FDD05C2072BB3B00768DB6 /* IconPickerViewController.swift in Sources */,
 				B2564782207278C400946DF7 /* ChecklistDataProvider.swift in Sources */,
 				B28B4839206F041D00144754 /* ChecklistDataPersistence.swift in Sources */,
 				B23C2A00207028210055F5B0 /* ListDetailViewController.swift in Sources */,
