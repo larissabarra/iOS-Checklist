@@ -31,6 +31,7 @@ class ChecklistDataProvider {
     
     func getLists() -> [Checklist] {
         data = persistence.loadChecklists()
+        sortLists()
         return data
     }
     
