@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Checklists/ChecklistDataProvider.swift"
-            timestampString = "544224228.762621"
+            filePath = "Checklists/ListDetailViewController.swift"
+            timestampString = "544375881.306512"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "persist()"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

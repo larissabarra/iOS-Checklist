@@ -11,13 +11,14 @@ import UIKit
 class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate {
     
     var lists: [Checklist] = []
+    var dataProvider = ChecklistDataProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        lists = [Checklist(name: "teste1"), Checklist(name: "teste2"), Checklist(name: "teste3")]
+        refreshData()
     }
 
     // MARK: - data source methods
@@ -50,12 +51,15 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         if segue.identifier == "showChecklist" {
             let checklistView = segue.destination as! ChecklistViewController
             checklistView.checklist = sender as! Checklist
+            checklistView.listDataProvider = dataProvider
         } else if segue.identifier == "goToAddList" {
             let listDetailView = segue.destination as! ListDetailViewController
             listDetailView.delegate = self
+            listDetailView.dataProvider = dataProvider
         } else if segue.identifier == "goToEditList" {
             let listDetailView = segue.destination as! ListDetailViewController
             listDetailView.delegate = self
+            listDetailView.dataProvider = dataProvider
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
                 listDetailView.checklistToEdit = lists[indexPath.row]
@@ -65,6 +69,11 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     
     //MARK: - list detail delegate methods
     func newListAdded() {
+        refreshData()
+        
+        let indexPath = IndexPath(row: lists.count-1, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
         dismissListDetailScreen()
     }
     
@@ -73,6 +82,9 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     }
     
     func listEdited() {
+        refreshData()
+        tableView.reloadData()
+        
         dismissListDetailScreen()
     }
     
@@ -88,5 +100,9 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     
     func dismissListDetailScreen() -> UIViewController? {
         return navigationController?.popViewController(animated: true)
+    }
+    
+    func refreshData() {
+        lists = dataProvider.getLists()
     }
 }

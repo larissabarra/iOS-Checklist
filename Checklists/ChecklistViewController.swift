@@ -9,18 +9,20 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
-
-    let dataProvider = ChecklistItemDataProvider()
-    var items: [ChecklistItem] = []
-    var checklist: Checklist?
+    
+    var checklist: Checklist!
+    var dataProvider: ChecklistItemDataProvider?
+    var listDataProvider: ChecklistDataProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = checklist?.name
+        dataProvider = ChecklistItemDataProvider(provider: listDataProvider!, list: checklist)
+        
+        title = checklist.name
         navigationItem.largeTitleDisplayMode = .never
-
-        loadItems()
+        
+        refreshData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,16 +32,16 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         if segue.identifier == "goToEditItem" {
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                itemDetailScreen.itemToEdit = items[indexPath.row]
+                itemDetailScreen.itemToEdit = checklist.items[indexPath.row]
             }
         }
     }
     
     // MARK: - ItemDetail delegate
     func newItemAdded() {
-        loadItems()
+        refreshData()
         
-        let indexPath = IndexPath(row: items.count-1, section: 0)
+        let indexPath = IndexPath(row: checklist.items.count-1, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
@@ -47,7 +49,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     func itemEdited() {
-        loadItems()
+        refreshData()
         tableView.reloadData()
         
         dismissItemDetailScreen()
@@ -56,15 +58,15 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     func actionCancelled() {
         dismissItemDetailScreen()
     }
-
+    
     // MARK: - Data Source section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return checklist.items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell( withIdentifier: "ChecklistItem", for: indexPath)
-        let item = items[indexPath.row]
+        let item = checklist.items[indexPath.row]
         
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
@@ -75,9 +77,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     // MARK: - Delegate section
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let item = items[indexPath.row]
+            let item = checklist.items[indexPath.row]
             item.toggleChecked()
-            dataProvider.editItem(item: item)
+            dataProvider?.editItem(item: item)
             
             configureCheckmark(for: cell, with: item)
         }
@@ -86,13 +88,13 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        dataProvider.removeItem(index: indexPath.row)
-        loadItems()
-
+        dataProvider?.removeItem(index: indexPath.row)
+        refreshData()
+        
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
-
+    
     // MARK: - class methods
     func configureCheckmark(for cell: UITableViewCell, with item: ChecklistItem) {
         let label = cell.viewWithTag(1001) as! UILabel
@@ -105,12 +107,11 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         label.text = item.text
     }
     
-    func loadItems() {
-        items = dataProvider.getItems()
+    func refreshData() {
+        checklist = dataProvider?.refreshList()
     }
     
     func dismissItemDetailScreen() -> UIViewController? {
         return navigationController?.popViewController(animated: true)
     }
 }
-

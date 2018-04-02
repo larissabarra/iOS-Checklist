@@ -18,25 +18,25 @@ class ChecklistDataPersistence {
         return documentsDirectory().appendingPathComponent("Checklists.plist")
     }
     
-    func saveChecklistItems(items: [ChecklistItem]) {
+    func saveChecklists(lists: [Checklist]) {
         let encoder = PropertyListEncoder()
         
         do {
-            let data = try encoder.encode(items)
+            let data = try encoder.encode(lists)
             try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
         } catch {
             print("Error encoding item array!")
         }
     }
     
-    func loadChecklistItems() -> [ChecklistItem] {
+    func loadChecklists() -> [Checklist] {
         let path = dataFilePath()
         
         if let data = try? Data(contentsOf: path) {
             let decoder = PropertyListDecoder()
             do {
-                let items = try decoder.decode([ChecklistItem].self, from: data)
-                return items
+                let lists = try decoder.decode([Checklist].self, from: data)
+                return lists
             } catch {
                 print("Error decoding item array!")
             }
