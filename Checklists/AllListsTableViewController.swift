@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate {
+class AllListsTableViewController: UITableViewController, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
     
     var lists: [Checklist] = []
     var dataProvider: ChecklistDataProvider?
@@ -19,6 +19,18 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         navigationController?.navigationBar.prefersLargeTitles = true
         
         refreshData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        
+        let index = UserDefaults.standard.integer(forKey: "ChecklistIndex")
+        if index != -1 {
+            let checklist = lists[index]
+            performSegue(withIdentifier: "showChecklist", sender: checklist)
+        }
     }
 
     // MARK: - data source methods
@@ -43,6 +55,8 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     
     // MARK: - segue methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserDefaults.standard.set(indexPath.row, forKey: "ChecklistIndex")
+        
         let checklist = lists[indexPath.row]
         performSegue(withIdentifier: "showChecklist", sender: checklist)
     }
@@ -86,6 +100,13 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
         tableView.reloadData()
         
         dismissListDetailScreen()
+    }
+    
+    //MARK: - navigation controller delegate
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController === self {
+            UserDefaults.standard.set(-1, forKey: "ChecklistIndex")
+        }
     }
     
     //MARK: - class methods
