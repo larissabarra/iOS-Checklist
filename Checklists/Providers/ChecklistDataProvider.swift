@@ -36,12 +36,14 @@ class ChecklistDataProvider {
     
     func addList(list: Checklist) {
         data.append(list)
+        sortLists()
         persist()
     }
     
     func editList(list: Checklist) {
         if let index = data.index(of: list) {
             data[index] = list
+            sortLists()
             persist()
         }
     }
@@ -58,6 +60,12 @@ class ChecklistDataProvider {
     func registerDefaults() {
         let dictionary = [ "ChecklistIndex": -1 ]
         UserDefaults.standard.register(defaults: dictionary)
+    }
+    
+    func sortLists() {
+        data.sort(by: { checklist1, checklist2 in
+            return checklist1.name.localizedStandardCompare(checklist2.name) == .orderedAscending
+        })
     }
 }
 

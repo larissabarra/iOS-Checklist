@@ -99,10 +99,8 @@ class AllListsTableViewController: UITableViewController, ListDetailViewControll
     //MARK: - list detail delegate methods
     func newListAdded() {
         refreshData()
+        tableView.reloadData()
         
-        let indexPath = IndexPath(row: lists.count-1, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
         dismissListDetailScreen()
     }
     

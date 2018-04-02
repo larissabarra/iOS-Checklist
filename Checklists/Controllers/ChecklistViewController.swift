@@ -40,10 +40,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     // MARK: - ItemDetail delegate
     func newItemAdded() {
         refreshData()
-        
-        let indexPath = IndexPath(row: checklist.items.count-1, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
+        tableView.reloadData()
         
         dismissItemDetailScreen()
     }
