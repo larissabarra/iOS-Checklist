@@ -24,9 +24,8 @@ class ChecklistItemDataProvider {
         return checklist
     }
     
-    func addItem(text: String, checked: Bool = false) {
-        let newItem = ChecklistItem(text: text, checked: checked)
-        checklist.items.append(newItem)
+    func addItem(item: ChecklistItem) {
+        checklist.items.append(item)
         persist()
     }
     

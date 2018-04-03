@@ -15,7 +15,7 @@ class ChecklistItem: NSObject, Codable {
     var shouldRemind = false
     var itemID: Int
     
-    init(text : String, checked : Bool) {
+    init(text: String, checked: Bool, dueDate: Date, shouldRemind: Bool) {
         self.text = text
         self.checked = checked
         self.itemID = ChecklistDataPersistence.nextChecklistItemID()
