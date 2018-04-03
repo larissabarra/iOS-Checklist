@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol ItemDetailViewControllerDelegate: class {
     func newItemAdded()
@@ -42,11 +43,13 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
                 item.dueDate = dueDate
                 dataProvider?.editItem(item: item)
                 
+                item.scheduleNotification()
                 delegate?.itemEdited()
             } else {
                 let newItem = ChecklistItem(text: itemText, checked: false, dueDate: dueDate, shouldRemind: shouldRemindSwitch.isOn)
                 dataProvider?.addItem(item: newItem)
                 
+                newItem.scheduleNotification()
                 delegate?.newItemAdded()
             }
         }
@@ -55,6 +58,17 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func dateChanged(_ datePicker: UIDatePicker) {
         dueDate = datePicker.date
         updateDueDateLabel()
+    }
+    
+    @IBAction func shouldRemindToggled(_ switchControl: UISwitch) {
+        textField.resignFirstResponder()
+        if switchControl.isOn {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) {
+                granted, error in
+                // do nothing
+            }
+        }
     }
     
     override func viewDidLoad() {
